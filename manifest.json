@@ -2,15 +2,20 @@
   "manifest_version": 2,
 
   "name": "CatchIt Job Retrieval",
+  "short_name": "CatchIt",
   "description": "This extension allows the user to send the job details of a web page do their CatchIt database.",
   "version": "1.0",
+  "icons": {"16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"},
 
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "icon16.png",
     "default_popup": "popup.html"
   },
   "permissions": [
     "activeTab",
     "storage"
-  ]
+  ],
+  "options_page": "signIn.html"
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CatchIt Job Saver</title>
+    <style type="text/css">
+        body {
+            margin: 10px;
+            white-space: nowrap;
+        }
+
+        h1 {
+            font-size: 15px;
+        }
+
+        #container {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha3\
+84-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAd\
+gtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7\
+G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW\
+3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div align="center" style="padding:70px 0">
+    <h1 class="text-center">Welcome to CatchIt!</h1>
+    <div class="container col-md-5">
+        <form class="sign-in" method="post" action="popup.html">
+            <h4 class="text-center">Please sign in.</h4>
+            <div class="form-group">
+                <label for="inputEmail" class="sr-only">Email: </label>
+                <input class="form-control" id="inputEmail" type="text" name="email" placeholder="Email address" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="sr-only">Password:</label>
+                <input id="inputPassword" class="form-control" type="password" name="psw" placeholder="Password" required>
+            </div>
+            <button class="btn btn-lg btn-primary btm-block" type="submit" name="submit2">Sign in</button>
+        </form>
+        <p>Don't have an account? <a href="signup.html">Sign up here.</a></p>
+    </div>
+</div>
+</body>
+</html>
+
