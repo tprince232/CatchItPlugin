@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     window.sessionStorage.setItem("userID", userID);
                     location.href = "popup.html";
                 }
-
             }
             return false;
         };
