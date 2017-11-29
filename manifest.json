@@ -15,7 +15,17 @@
   },
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "*://*/*"
+
   ],
-  "options_page": "signIn.html"
+  "options_page": "signIn.html",
+
+  "content_scripts": [{
+    "matches": ["*://*.indeed.com/*"],
+    "js": ["content.js"],
+    "run_at": "document_start"
+  }],
+
+  "content_security_policy": "script-src 'self' https://dsg1.crc.nd.edu https://code.jquery.com https://cdnjs.cloudflare.com https://maxcdn.bootstrapcdn.com; object-src 'self'"
 }
