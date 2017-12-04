@@ -30,15 +30,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             return false;
         };
-        var URL = "https://dsg1.crc.nd.edu/cse30246/catchit/api/login.php";
+        var postURL = "https://dsg1.crc.nd.edu/cse30246/catchit/api/login.php/";
         var params = "email=" + username + "&psw=" + password;
-        URL = URL + '?' + params;
+        //URL = URL + '?' + params;
         console.log(URL);
-        xhr.open("GET", URL, true);
-        //xhr.setRequestHeader('email', username);
-        //xhr.setRequestHeader('psw', password);
-        xhr.send();
+        xhr.open("POST", postURL, true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send(params);
 
-        //alert("past signin");
     });
 });

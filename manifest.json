@@ -25,7 +25,12 @@
     "matches": ["*://*.indeed.com/*"],
     "js": ["content.js"],
     "run_at": "document_start"
-  }],
+  },
+    {
+      "matches": ["*://*.glassdoor.com/*"],
+      "js": ["content_gd.js"],
+      "run_at": "document_start"
+    }],
 
   "content_security_policy": "script-src 'self' https://dsg1.crc.nd.edu https://code.jquery.com https://cdnjs.cloudflare.com https://maxcdn.bootstrapcdn.com; object-src 'self'"
 }
