@@ -3,8 +3,8 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     // If the received message has the expected format...
     if (msg.text === 'report_back') {
 
-        var spans = document.getElementsByTagName('span');
-        var i = 0;
+        //var spans = document.getElementsByTagName('span');
+        //var i = 0;
 
         var data = {};
         /*for (i; i<spans.length; i++) {
@@ -13,11 +13,13 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 
             }
         }*/
-        var title = 'var'; //spans.querySelector('[itemprop=title]').textContent;
-        data.title = title; //'val';//document.getElementsByClassName("jobtitle")[0].innerHTML;
-        data.company = 'val'; //document.getElementsByClassName("company")[0].innerHTML;
-        data.location = 'val'; //document.getElementsByClassName("loc")[0].value;
-        data.description = 'val';//document.getElementById("job_summary").innerHTML;
+        data.title = document.getElementsByClassName("breadcrumb ib ")[1].textContent;
+        data.company = document.getElementsByClassName("breadcrumb ib ")[4].textContent;
+        var state = document.getElementsByClassName("breadcrumb ib ")[2].textContent;
+        var city = document.getElementsByClassName("breadcrumb ib ")[3].textContent;
+
+        data.location = city + ", " + state;
+        data.description = document.getElementsByClassName("jobDescriptionContent desc")[0].innerHTML;
 
         sendResponse(data)
     }
