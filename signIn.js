@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', function () {
     ln.onclick = function () {
         chrome.tabs.create({active: true, url: loc});
     };
+    chrome.storage.sync.set({'value': null}, function() {
+        // Notify that we saved.
+        console.log('User ID set to null');
+    });
 
     document.getElementById("submit").addEventListener('click',  function() {
 
@@ -25,6 +29,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     var userID = Number(xhr.responseText);
                     console.assert(userID, 'user login response should be an int');
                     window.sessionStorage.setItem("userID", userID);
+                    chrome.storage.sync.set({'value': userID}, function() {
+                        // Notify that we saved.
+                        console.log('New userID saved');
+                    });
+                    alert("saved id")
                     location.href = "popup.html";
                 }
             }
@@ -32,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         var postURL = "https://dsg1.crc.nd.edu/cse30246/catchit/api/login.php/";
         var params = "email=" + username + "&psw=" + password;
-        //URL = URL + '?' + params;
+
         console.log(URL);
         xhr.open("POST", postURL, true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

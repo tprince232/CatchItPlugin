@@ -31,17 +31,24 @@ function submitJobInformation() {
             source = "glassdoor.com";
             content_script = "content_gd.js";
         }
+        else {
+            document.getElementById("report").innerHTML = "Inapplicable Web Page";
+        }
         if (source !== "None") {
             // ...if it matches, send a message specifying a callback too
             chrome.tabs.executeScript(null, {file: content_script});
             chrome.tabs.sendMessage(tab.id, {text: 'report_back'}, function(domContent) {
-                console.log('I received the following DOM content:\n' + domContent.title);
-
+                try {
+                    console.log('I received the following DOM content:\n' + domContent.title);
+                }
+                catch(err) {
+                    document.getElementById("report").innerHTML = "Inapplicable Web Page";
+                    return
+                }
                 var xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         console.log(xhr.responseText);
-
                     }
                     return false;
                 };
@@ -54,7 +61,7 @@ function submitJobInformation() {
                 var params = "id=" + userID + "&company=" + domContent.company + "&location=" +
                     domContent.location + "&jobtitle=" + domContent.title + "&deadline=" + "" + "&source=" + source +
                     "&details="  + domContent.description + "&url=" + url;
-                //postURL = postURL + '?' + params;
+
                 console.log(postURL);
                 xhr.open("POST", postURL, true);
                 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -64,6 +71,7 @@ function submitJobInformation() {
 
     });
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
 

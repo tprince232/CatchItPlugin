@@ -3,16 +3,8 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     // If the received message has the expected format...
     if (msg.text === 'report_back') {
 
-        //var spans = document.getElementsByTagName('span');
-        //var i = 0;
-
         var data = {};
-        /*for (i; i<spans.length; i++) {
-            var prop = spans[i].getAttribute('itemprop');
-            if (prop) {
 
-            }
-        }*/
         data.title = document.getElementsByClassName("breadcrumb ib ")[1].textContent;
         data.title = data.title.replace(/<(?:.|\n)*?>/gm, '');
         data.title = data.title.replace('>', '');
