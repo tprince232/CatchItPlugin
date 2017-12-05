@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ln.onclick = function () {
         chrome.tabs.create({active: true, url: loc});
     };
-    chrome.storage.sync.set({'value': null}, function() {
+    chrome.storage.sync.set({'userID': null}, function() {
         // Notify that we saved.
         console.log('User ID set to null');
     });
@@ -29,11 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     var userID = Number(xhr.responseText);
                     console.assert(userID, 'user login response should be an int');
                     window.sessionStorage.setItem("userID", userID);
-                    chrome.storage.sync.set({'value': userID}, function() {
+                    chrome.storage.sync.set({'userID': userID}, function() {
                         // Notify that we saved.
                         console.log('New userID saved');
                     });
-                    alert("saved id")
                     location.href = "popup.html";
                 }
             }
